@@ -9,6 +9,6 @@ package Model;
  *
  * @author avgrisalesgu
  */
-public class lm {
+public class entity {
     
 }
