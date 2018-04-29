@@ -9,6 +9,6 @@ package Controll;
  *
  * @author avgrisalesgu
  */
-public class unguidedGraph {
+public class GraphNeighborhood {
     
 }

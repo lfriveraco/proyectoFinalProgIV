@@ -9,6 +9,6 @@ package Controll;
  *
  * @author avgrisalesgu
  */
-public class directedgraph {
+public class GraphEventType {
     
 }
