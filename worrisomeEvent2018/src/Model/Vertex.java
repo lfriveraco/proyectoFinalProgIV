@@ -5,10 +5,47 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author avgrisalesgu
  */
 public class Vertex {
-    
+    ArrayList<Entity> relationship;
+    private Entity entity;
+
+    public Vertex() {
+    }
+
+    public Vertex( Entity entity) {        
+        this.entity = entity;
+        this.relationship = new ArrayList<>();
+    }
+    public ArrayList<Entity> getRelationship() {
+        return relationship;
+    }
+
+    public void setRelationship(ArrayList<Entity> relationship) {
+        this.relationship = relationship;
+    }
+    public Entity getEntity() {
+        return entity;
+    }
+    public void setEntity(Entity entity) {
+        this.entity = entity;
+    } 
+    /***
+     * Se crea el buscar relaciones por nombre,dentro del vertice
+     * @param name
+     * @return 
+     */
+     public boolean find(String name){     
+        for (Entity entity : relationship ) {
+            if(entity.getName().equals(name)){
+                return true;
+            }
+        }        
+        return false;       
+    }       
 }

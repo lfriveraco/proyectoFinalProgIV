@@ -5,6 +5,9 @@
  */
 package worrisomeevent2018;
 
+import Model.Graphs;
+import Model.Neighborhood;
+
 /**
  *
  * @author avgrisalesgu
@@ -15,7 +18,11 @@ public class WorrisomeEvent2018 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+        Graphs graphs=new Graphs(true);
+        graphs.insert(new Neighborhood("Fatima", 3, true, "5010", 3));
+        graphs.insert(new Neighborhood("Bosque", 4, true, "5011", 3));
+        
+        graphs.addRelationship("Fatima", "Bosque", new Neighborhood("Bosque", 4, false, "5011", 3));
+        graphs.addRelationship("Fatima", "Bosque", new Neighborhood("Bosque", 4, false, "5011", 3));
+    }    
 }
