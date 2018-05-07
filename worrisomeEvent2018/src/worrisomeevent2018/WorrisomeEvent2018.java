@@ -5,6 +5,7 @@
  */
 package worrisomeevent2018;
 
+import Model.EventType;
 import Model.Graphs;
 import Model.Neighborhood;
 
@@ -18,11 +19,22 @@ public class WorrisomeEvent2018 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graphs graphs=new Graphs(true);
-        graphs.insert(new Neighborhood("Fatima", 3, true, "5010", 3));
-        graphs.insert(new Neighborhood("Bosque", 4, true, "5011", 3));
         
-        graphs.addRelationship("Fatima", "Bosque", new Neighborhood("Bosque", 4, false, "5011", 3));
-        graphs.addRelationship("Fatima", "Bosque", new Neighborhood("Bosque", 4, false, "5011", 3));
+        Graphs neighborhoodGrap=new Graphs(false);
+        neighborhoodGrap.insert(new Neighborhood("Fatima", "5010", 3));
+        neighborhoodGrap.insert(new Neighborhood("Bosque", "5011", 4));
+        
+        neighborhoodGrap.addRelationship("Fatima", "Bosque", 1);
+        
+        System.out.println("dfgh");
+        
+        Graphs eventTypeGrap=new Graphs(true);
+        eventTypeGrap.insert(new EventType("Fatima", "5010"));
+        eventTypeGrap.insert(new EventType("Bosque", "5011"));
+        
+        eventTypeGrap.addRelationship("Fatima", "Bosque", 1);
+        
+        System.out.println("dfgh");
+        
     }    
 }

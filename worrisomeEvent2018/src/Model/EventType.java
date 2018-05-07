@@ -10,5 +10,8 @@ package Model;
  * @author avgrisalesgu
  */
 public class EventType extends Entity{
-    
+
+    public EventType(String name, String codigo) {
+        super(name, codigo);
+    }
 }

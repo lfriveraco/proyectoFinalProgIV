@@ -15,7 +15,9 @@ public class Graphs {
 
     ArrayList<Vertex> vertex;
     boolean addressed;
-
+    /***
+         * si es no dirigido son los neighborhood se pone false para los eventtype(delitos) True
+         */
     public Graphs(boolean addressed) {
         this.addressed = addressed;
         this.vertex = new ArrayList<>();
@@ -29,6 +31,13 @@ public class Graphs {
         this.vertex = vertex;
     }
 
+    /**
+     * *
+     * datos de tipo boolen se crean como is en vez de get ya que este indica
+     * yes or not
+     *
+     * @return
+     */
     public boolean isAddressed() {
         return addressed;
     }
@@ -70,21 +79,46 @@ public class Graphs {
         return false;
     }
 
-    public boolean addRelationship(String vertexNameA, String vertexNameB, Entity entityName) {
+    /**
+     * *
+     * almacenar las relaciones ya sean eventos ventos
+     */
+    public boolean addRelationship(String vertexNameA, String vertexNameB, int  weight) {
         Vertex tempVertexA = find(vertexNameA);
         Vertex tempVertexB = find(vertexNameB);
-        /***
-         * Validar que  los vertices temporales no sean nulos
+        
+        /**
+         * *
+         * Validar que los vertices temporales no sean nulos
          */
         if (tempVertexA != null && tempVertexB != null) {
-            /***
-             * validar que la relacion no exista
+            /**
+             * *
+             * validar que la relacion no exista de a en b
              */
             if (!tempVertexA.find(vertexNameB)) {
-                /***
-                 * si no existen se agrega la nueva relacion
+                Entity entityB=tempVertexB.getEntity();
+                Relationship relationshipB=new Relationship(entityB, weight);
+                /**
+                 * *
+                 * si no existen se agrega la nueva relacion a
                  */
-                tempVertexA.relationship.add(entityName);
+                tempVertexA.relationship.add(relationshipB);
+                /**
+                     * *
+                     * si el grafo es dirigido se prodra agrgar la segunda lista en el primer vrtice
+                     */
+                if (!this.isAddressed()) {
+                    Entity entityA=tempVertexA.getEntity();
+                    Relationship relationshipA=new Relationship(entityA, weight);
+                    /**
+                     * *
+                     * si no existen b en a se agrega la nueva relacion solo si
+                     */
+                    if (!tempVertexB.find(vertexNameA)) {
+                        tempVertexB.relationship.add(relationshipA);
+                    }
+                }
                 return true;
             }
         }

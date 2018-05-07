@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author avgrisalesgu
  */
 public class Vertex {
-    ArrayList<Entity> relationship;
+    ArrayList<Relationship> relationship;
     private Entity entity;
 
     public Vertex() {
@@ -22,11 +22,11 @@ public class Vertex {
         this.entity = entity;
         this.relationship = new ArrayList<>();
     }
-    public ArrayList<Entity> getRelationship() {
+    public ArrayList<Relationship> getRelationship() {
         return relationship;
     }
 
-    public void setRelationship(ArrayList<Entity> relationship) {
+    public void setRelationship(ArrayList<Relationship> relationship) {
         this.relationship = relationship;
     }
     public Entity getEntity() {
@@ -41,8 +41,8 @@ public class Vertex {
      * @return 
      */
      public boolean find(String name){     
-        for (Entity entity : relationship ) {
-            if(entity.getName().equals(name)){
+        for (Relationship entity : relationship ) {
+            if(entity.getEntity().getName().equals(name)){
                 return true;
             }
         }        
