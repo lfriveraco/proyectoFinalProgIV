@@ -20,21 +20,23 @@ public class WorrisomeEvent2018 {
      */
     public static void main(String[] args) {
         
-        Graphs neighborhoodGrap=new Graphs(false);
+        /*Graphs neighborhoodGrap=new Graphs(false);
         neighborhoodGrap.insert(new Neighborhood("Fatima", "5010", 3));
         neighborhoodGrap.insert(new Neighborhood("Bosque", "5011", 4));
         
         neighborhoodGrap.addRelationship("Fatima", "Bosque", 1);
+        neighborhoodGrap.removeRelationship("Fatima", "Bosque");
+        System.out.println("dfgh");*/
         
-        System.out.println("dfgh");
+        Graphs eventTypeGrap=new Graphs(false);
+        eventTypeGrap.insert(new EventType("Robo", "5010"));
+        eventTypeGrap.insert(new EventType("Maltrato", "5011"));
         
-        Graphs eventTypeGrap=new Graphs(true);
-        eventTypeGrap.insert(new EventType("Fatima", "5010"));
-        eventTypeGrap.insert(new EventType("Bosque", "5011"));
+        eventTypeGrap.addRelationship("Robo", "Maltrato", 5);
         
-        eventTypeGrap.addRelationship("Fatima", "Bosque", 1);
+        //eventTypeGrap.removeRelationship("Robo", "Maltrato");
         
-        System.out.println("dfgh");
+        System.out.println(eventTypeGrap.findWeight("Maltrato", "Robo"));
         
     }    
 }

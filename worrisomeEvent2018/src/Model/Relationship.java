@@ -6,17 +6,20 @@
 package Model;
 
 /**
+ * Case que almcena toda la infomcion referente a la relacion entre un vetice y
+ * otro.
  *
  * @author avgrisalesgu
  */
 public class Relationship {
 
     Entity entity;
-    protected int weight;
-    protected boolean visited;
+    private int weight;
+    private boolean visited;
+
     public Relationship(Entity nombre, int weight) {
         this.entity = nombre;
-        this.weight = weight;        
+        this.weight = weight;
     }
 
     public Entity getEntity() {

@@ -9,11 +9,13 @@ package Model;
  *
  * @author avgrisalesgu
  */
-public class Neighborhood extends Entity{
+public class Neighborhood extends Entity {
+
     int stratum;
-    public Neighborhood(String name,String codigo,int stratum) {
-        super(name,codigo);
-        this.stratum=stratum;
+
+    public Neighborhood(String name, String codigo, int stratum) {
+        super(name, codigo);
+        this.stratum = stratum;
     }
 
     public int getStratum() {
@@ -22,5 +24,5 @@ public class Neighborhood extends Entity{
 
     public void setStratum(int stratum) {
         this.stratum = stratum;
-    }    
+    }
 }
