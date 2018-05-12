@@ -206,4 +206,29 @@ public class Graphs {
         }
         return 0;
     }
+    public int ordengrafo() {
+        return this.getVertex().size();
+    }
+    /**
+     * dado vertice A y vetice B retorna el peso de la relacion entre estos dos
+     * vertices en caso de que no exista la relacion retorna 0
+     *
+     * @param vertexNameA Nombre del vertice A
+     * @param vertexNameB Nombre del vertice B
+     * @return Retorna el valor del pero de la relacion, retorna 0 si no hay
+     * relacion
+     *
+     */
+    public ArrayList ListVertex(String vertexNameA, String vertexNameB) {
+        Vertex temVertexNameA = this.find(vertexNameA);
+        Vertex temVertexNameB = null;
+
+        if (temVertexNameA != null) {
+            temVertexNameB = this.find(vertexNameB);
+            if (temVertexNameB != null) {
+               
+            }
+        }
+        return null;
+    }
 }
