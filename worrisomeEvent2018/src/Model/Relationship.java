@@ -15,7 +15,7 @@ public class Relationship {
 
     Entity entity;
     private int weight;
-    private boolean visited;
+    
 
     public Relationship(Entity nombre, int weight) {
         this.entity = nombre;
@@ -37,13 +37,8 @@ public class Relationship {
     public void setWeight(int weight) {
         this.weight = weight;
     }
-
-    public boolean isVisited() {
-        return visited;
+    @Override
+    public String toString() {
+        return "\n\t -"+entity+"-peso "+this.weight;
     }
-
-    public void setVisited(boolean visited) {
-        this.visited = visited;
-    }
-
 }

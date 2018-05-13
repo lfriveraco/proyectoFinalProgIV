@@ -12,16 +12,15 @@ import java.util.ArrayList;
  * @author avgrisalesgu
  */
 public class Vertex {
-   
+
     private Entity entity;
     ArrayList<Relationship> relationship;
-
-    public Vertex() {
-    }
+    private boolean visited;
 
     public Vertex(Entity entity) {
         this.entity = entity;
         this.relationship = new ArrayList<>();
+        this.visited = visited;
     }
 
     public ArrayList<Relationship> getRelationship() {
@@ -38,6 +37,14 @@ public class Vertex {
 
     public void setEntity(Entity entity) {
         this.entity = entity;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 
     /**
@@ -69,5 +76,10 @@ public class Vertex {
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return entity + "\n relaciones:" + relationship;
     }
 }

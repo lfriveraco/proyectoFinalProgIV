@@ -5,7 +5,11 @@
  */
 package Model;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import javax.swing.JFileChooser;
 
 /**
  * Clase que representa la logia general del grafo.
@@ -206,29 +210,106 @@ public class Graphs {
         }
         return 0;
     }
-    public int ordengrafo() {
-        return this.getVertex().size();
-    }
-    /**
-     * dado vertice A y vetice B retorna el peso de la relacion entre estos dos
-     * vertices en caso de que no exista la relacion retorna 0
-     *
-     * @param vertexNameA Nombre del vertice A
-     * @param vertexNameB Nombre del vertice B
-     * @return Retorna el valor del pero de la relacion, retorna 0 si no hay
-     * relacion
-     *
-     */
-    public ArrayList ListVertex(String vertexNameA, String vertexNameB) {
-        Vertex temVertexNameA = this.find(vertexNameA);
-        Vertex temVertexNameB = null;
 
-        if (temVertexNameA != null) {
-            temVertexNameB = this.find(vertexNameB);
-            if (temVertexNameB != null) {
-               
-            }
+    /**
+     * dado el nombe de un vertice mustra sus datos y susu relaciones.
+     *
+     * @param vertexName nombre del vertice que se quiere mostrar
+     * @return
+     */
+    public ArrayList showVertex(String vertexName) {
+        Vertex temVertexName = this.find(vertexName);
+        if (temVertexName != null) {
+            System.out.println(temVertexName);
         }
         return null;
+    }
+
+    /**
+     * permite consultar la cantidad de vertices del grafo
+     *
+     * @return
+     */
+    public int orderGraph() {
+        return this.getVertex().size();
+    }
+
+    /**
+     * permite obtener los datos del vertice.
+     *
+     * @param vertexName
+     * @return
+     */
+    public Entity infoVertex(String vertexName) {
+        Vertex temVertex = find(vertexName);
+        if (temVertex != null) {
+            return temVertex.getEntity();
+        }
+        return null;
+    }
+
+    /**
+     * permite guardar la informacion que contiene en grafo.
+     */
+    public void guardarGrafo() {
+        JFileChooser mfFileChooser = new JFileChooser();
+        mfFileChooser.showSaveDialog(null);
+        File archivoGrafo = mfFileChooser.getSelectedFile();
+        String cadena = "";
+        try {
+            /**
+             * Abrimos el archivo seleccionado y se guarda tal como lo queremos*
+             */
+            FileWriter escribir = new FileWriter(archivoGrafo, false);
+            for (Vertex vertex : this.getVertex()) {
+                cadena = cadena + vertex.getEntity() + ";";
+                cadena = cadena + vertex.getRelationship() + "\n";
+                escribir.write(cadena);
+            }
+            escribir.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     * permite marcar la relacion entre dos vertices como visitado o no visitado
+     *
+     * @param VertexNameA Nombre vertice A
+     * @param vertexNameB Nombre vertice B
+     * @param status
+     */
+    public void markVertex(String VertexNameA, String vertexNameB, boolean status) {
+        Vertex tempVertex = find(VertexNameA);
+        if (tempVertex != null) {
+            tempVertex.setVisited(status);
+        }
+    }
+    /**
+     * permite buscar si hay un camino entre dos vertices
+     *
+     * @param VertexNameA Nombre vertice A
+     * @param vertexNameB Nombre vertice B
+     * @return
+     */
+    public boolean encontar(String VertexNameA, String vertexNameB) {
+        boolean encontro = false;
+        if (VertexNameA.equals(vertexNameB)) {
+            encontro = true;
+        } else {
+            Vertex temVertexNameA = find(VertexNameA);
+            if (!temVertexNameA.isVisited()) {
+                temVertexNameA.setVisited(true);
+                ArrayList<Relationship> arrayList = temVertexNameA.getRelationship();
+                for (Relationship relationship : arrayList) {
+                    if (encontar(relationship.getEntity().getName(), vertexNameB)) {
+                        encontro = true;
+                        return true;
+                    }
+                }
+                encontro = false;
+            }
+        }
+        return encontro;
     }
 }
