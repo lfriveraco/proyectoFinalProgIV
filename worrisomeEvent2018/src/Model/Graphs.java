@@ -292,7 +292,7 @@ public class Graphs {
      * @param vertexNameB Nombre vertice B
      * @return
      */
-    public boolean encontar(String VertexNameA, String vertexNameB) {
+    public boolean findPath(String VertexNameA, String vertexNameB) {
         boolean encontro = false;
         if (VertexNameA.equals(vertexNameB)) {
             encontro = true;
@@ -302,7 +302,7 @@ public class Graphs {
                 temVertexNameA.setVisited(true);
                 ArrayList<Relationship> arrayList = temVertexNameA.getRelationship();
                 for (Relationship relationship : arrayList) {
-                    if (encontar(relationship.getEntity().getName(), vertexNameB)) {
+                    if (findPath(relationship.getEntity().getName(), vertexNameB)) {
                         encontro = true;
                         return true;
                     }

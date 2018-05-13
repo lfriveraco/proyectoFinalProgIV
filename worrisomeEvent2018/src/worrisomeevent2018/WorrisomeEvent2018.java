@@ -31,7 +31,7 @@ public class WorrisomeEvent2018 {
         neighborhoodGrap.addRelationship("Fatima", "Carola", 3);
         neighborhoodGrap.addRelationship("Fatima", "Comuneros", 4);
         //neighborhoodGrap.infoVertex("Fatima");
-        boolean res = neighborhoodGrap.encontar("Comuneros", "Bosque");
+        boolean res = neighborhoodGrap.findPath("Comuneros", "Bosque");
         //neighborhoodGrap.guardarGrafo();
         //neighborhoodGrap.removeRelationship("Fatima", "Bosque");
         //neighborhoodGrap.showVertex("Fatima");        
