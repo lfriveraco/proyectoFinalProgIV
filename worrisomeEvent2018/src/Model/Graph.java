@@ -18,12 +18,12 @@ import javax.swing.JFileChooser;
  * Dirigidos seràn los Tipos de Delitos. No dirigios seràn los Barrios.
  * @author avgrisalesgu
  */
-public class Graphs {
+public class Graph {
 
     ArrayList<Vertex> vertex;
     boolean addressed;
 
-    public Graphs(boolean addressed) {
+    public Graph(boolean addressed) {
         this.addressed = addressed;
         this.vertex = new ArrayList<>();
     }
@@ -217,12 +217,13 @@ public class Graphs {
      * @param vertexName nombre del vertice que se quiere mostrar
      * @return
      */
-    public ArrayList showVertex(String vertexName) {
+    public String showVertex(String vertexName) {
+        String infoVertex="";
         Vertex temVertexName = this.find(vertexName);
         if (temVertexName != null) {
-            System.out.println(temVertexName);
+           infoVertex+=temVertexName;
         }
-        return null;
+        return infoVertex;
     }
 
     /**
@@ -246,6 +247,14 @@ public class Graphs {
             return temVertex.getEntity();
         }
         return null;
+    }
+    
+    public String showGraph(){
+        String text="";
+        for (Vertex vertex1 : vertex) {
+           text+=this.showVertex(vertex1.getEntity().getName())+"\n";
+        }
+        return text;
     }
 
     /**
@@ -295,7 +304,7 @@ public class Graphs {
     public boolean findPath(String VertexNameA, String vertexNameB) {
         boolean encontro = false;
         if (VertexNameA.equals(vertexNameB)) {
-            encontro = true;
+            return true;
         } else {
             Vertex temVertexNameA = find(VertexNameA);
             if (!temVertexNameA.isVisited()) {
@@ -303,11 +312,10 @@ public class Graphs {
                 ArrayList<Relationship> arrayList = temVertexNameA.getRelationship();
                 for (Relationship relationship : arrayList) {
                     if (findPath(relationship.getEntity().getName(), vertexNameB)) {
-                        encontro = true;
-                        return true;
+                       return true;
                     }
                 }
-                encontro = false;
+                return false;
             }
         }
         return encontro;

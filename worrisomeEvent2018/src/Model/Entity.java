@@ -17,9 +17,10 @@ public class Entity {
     public Entity() {
     }
 
-    public Entity(String name, String code) {
-        this.name = name;
+    public Entity(String code,String name) {
         this.code = code;
+        this.name = name;
+        
     }
 
     public String getCode() {

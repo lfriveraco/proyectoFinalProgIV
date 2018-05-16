@@ -13,8 +13,8 @@ public class Neighborhood extends Entity {
 
     int stratum;
 
-    public Neighborhood(String name, String code, int stratum) {
-        super(name, code);
+    public Neighborhood(String code, String name, int stratum) {
+        super(code,name);
         this.stratum = stratum;
     }
 
