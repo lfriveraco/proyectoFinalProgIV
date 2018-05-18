@@ -22,7 +22,8 @@ public class WorrisomeEvent2018 {
      */
     public static void main(String[] args) {
 
-        Graph neighborhoodGrap = new Graph(true);
+        Graph neighborhoodGrap = new Graph(false);
+        Graph eventsGraph = new Graph(true);
         GraphController controller = new GraphController();
         
         controller.loadGraphNeigborhood(neighborhoodGrap);
@@ -30,6 +31,8 @@ public class WorrisomeEvent2018 {
         
         System.out.println(neighborhoodGrap.showGraph());
         System.out.println(neighborhoodGrap.orderGraph());
+        
+        controller.inserEvents(eventsGraph);
         
         System.out.println(neighborhoodGrap.findPath(
                 neighborhoodGrap.getVertex().get(0).getEntity().getName(),

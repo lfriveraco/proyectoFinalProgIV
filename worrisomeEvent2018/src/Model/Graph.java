@@ -85,10 +85,21 @@ public class Graph {
     }
 
     /**
-     * *
-     * almacenar las relaciones ya sean eventos ventos
+     * Añade una relacion al vertice con otro, puede ser un evento o un barrio.
+     *
+     * @param vertexNameA El vertice que almacena la relacion
+     * @param vertexNameB el vertice relacionado con el vertice a
+     * @param weight El peso de la relacion entre ambos vertices.
+     * @return
      */
     public boolean addRelationship(String vertexNameA, String vertexNameB, int weight) {
+        /**
+         * validamos que en el vertice no se inserte una relacion a sí mismo. 
+         */
+        if (vertexNameA.equals(vertexNameB)) {
+            return false;
+        }
+
         Vertex tempVertexA = find(vertexNameA);
         Vertex tempVertexB = find(vertexNameB);
 
@@ -218,10 +229,10 @@ public class Graph {
      * @return
      */
     public String showVertex(String vertexName) {
-        String infoVertex="";
+        String infoVertex = "";
         Vertex temVertexName = this.find(vertexName);
         if (temVertexName != null) {
-           infoVertex+=temVertexName;
+            infoVertex += temVertexName;
         }
         return infoVertex;
     }
@@ -229,7 +240,7 @@ public class Graph {
     /**
      * permite consultar la cantidad de vertices del grafo
      *
-     * @return
+     * @return int
      */
     public int orderGraph() {
         return this.getVertex().size();
@@ -248,11 +259,11 @@ public class Graph {
         }
         return null;
     }
-    
-    public String showGraph(){
-        String text="";
+
+    public String showGraph() {
+        String text = "";
         for (Vertex vertex1 : vertex) {
-           text+=this.showVertex(vertex1.getEntity().getName())+"\n";
+            text += this.showVertex(vertex1.getEntity().getName()) + "\n";
         }
         return text;
     }
@@ -294,6 +305,7 @@ public class Graph {
             tempVertex.setVisited(status);
         }
     }
+
     /**
      * permite buscar si hay un camino entre dos vertices
      *
@@ -312,7 +324,7 @@ public class Graph {
                 ArrayList<Relationship> arrayList = temVertexNameA.getRelationship();
                 for (Relationship relationship : arrayList) {
                     if (findPath(relationship.getEntity().getName(), vertexNameB)) {
-                       return true;
+                        return true;
                     }
                 }
                 return false;

@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author avgrisalesgu
@@ -12,10 +14,12 @@ package Model;
 public class Neighborhood extends Entity {
 
     int stratum;
+    ArrayList<EventType> eventTypes;
 
     public Neighborhood(String code, String name, int stratum) {
         super(code,name);
         this.stratum = stratum;
+        this.eventTypes = new ArrayList<>();
     }
 
     public int getStratum() {
@@ -25,6 +29,10 @@ public class Neighborhood extends Entity {
     public void setStratum(int stratum) {
         this.stratum = stratum;
     } 
+
+    public ArrayList<EventType> getEventTypes() {
+        return eventTypes;
+    }
 
     @Override
     public String toString() {

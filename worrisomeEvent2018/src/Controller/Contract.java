@@ -17,8 +17,10 @@ import java.security.SecureRandom;
  */
 public class Contract {
 
+    public static final int MIN_RELATIONS = 1;
+
     SecureRandom sr = new SecureRandom();
-    public static final int MAX_VERTEX = 5;
+    public static final int MIN_VERTEX = 5;
 
     public static final Commune[] COMMUNES = {
         new Commune("COMM-1", "COMUNA ATARDECERES"),
@@ -77,6 +79,12 @@ public class Contract {
         new Neighborhood("1100", "ARENILLO", 2 - 3)
     };
 
+    /**
+     * Permite obtener un número entero entre un minimo y un maximo. 
+     * @param min valor minimo a obtener. (iclusive) 
+     * @param max Valor máximo a obtener (Inclusive) 
+     * @return 
+     */
     public static int random(int min, int max) {
         SecureRandom sr = null;
         int number;
@@ -89,6 +97,10 @@ public class Contract {
             e.printStackTrace();
         }
         
+        /**
+         * si el numero aleatorio es menor que el minio que se pide, se 
+         * suma el valor del minimo para normalizar. 
+         */
         number  = sr.nextInt(max);
         if(number < min){
             number+=min;
